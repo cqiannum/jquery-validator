@@ -444,7 +444,7 @@
         },
 
         //the messages when focus
-       focusMsg: {
+        focusMsg: {
             english: "Only enter English characters as the user name",
             chinese: "Only enter Chinese characters as the user name",
             email: "Enter a useful email",
@@ -458,10 +458,10 @@
             minlength: "The number of characters input should be more then 3",
             maxlength: "The number of characters input should be smaller than 8",
             notBlank: "You can enter any characters you like"
-       },
+        },
 
         //the default error message;
-       errorMsg: {
+        errorMsg: {
             english: "Invalid english character",
             chinese: "Invalid chinese character",
             email: "Invalid email, Please enter a right email",
@@ -476,7 +476,7 @@
             maxlength: "The number of characters are too many",
             notBlank: "The input box cannot be empty",
             phone: "Invalid teliphone number"
-       },
+        },
 
         inputs: [],
         button: null,

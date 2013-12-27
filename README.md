@@ -23,7 +23,7 @@ Download: <a href="https://github.com/cqiannum/jquery-validator">jquery-validato
 
 Import this libraries:
 * jQuery
-* jquery-validator.min.js
+* jquery-validator.js
 
 And CSS:
 * jquery-validator.css 
@@ -66,26 +66,8 @@ Create base html element:
 
 Initialize validator:
 ```javascript
-var inputs1 = [{name: "username", type: "english"}, { name: "email",	type: "email"}, { name: "pwd", type: "password"}, { name: "chepwd", type: "eq", errorMsg: 'The password is different', eqto: 'pwd'}, {name:"age", between:[18,78], focusMsg:'18< >78', errorMsg:'18< >78'}];
+var inputs1 = [{name: "username", type: "english"}, { name: "email",	type: "email"}, { name: "pwd", type: "password"}, { name: "chepwd", type: "eq", eqto: 'pwd'}, {name:"age",type:"age", between:[18,78]}];
 $("#validate_form").validator({inputs:inputs1});
-```
-
-Or initialize validator with custom settings:
-```javascript
-$("#validate_form").validator({
-	namespace: 'validator',
-    tipShow: "floatleft",
-    regulars: {
-            "email": [/^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))){2,6}$/, "Invalid email."],
-            "number": [/^-?([1-9]\d*\.\d*|0\.\d*[1-9]\d*|0?\.0+|0)$/, "Invalid number."],
-            "phone": [/^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$/, "Invalid phone number."],
-            "date": [/^(\d{4})\D?(0[1-9]|1[0-2])\D?([12]\d|0[1-9]|3[01])$/, "Should like(YYYY-MM-DD)."],
-            "password": [/^[a-z0-9_-]{6,18}$/, "Invalid password."],
-            "chinese": [/^[\u0391-\uFFE5]+$/, "Invalid chinese char."],
-            "english": [/^[A-Za-z]+$/, "Invalid english char."]
-        },
-    inputs: [],
-});
 ```
 
 ## Settings
@@ -96,18 +78,68 @@ $("#validate_form").validator({
     // Optional property, Set a namespace for css class
     namespace: 'validator',
     
-    //Optional property, set the display mode of error message, can be set 'floatleft' or 'slidedown'.
-    tipShow: 'floatleft',   
+    //Optional property, set the display mode of error message, can be set 'floatleft' 、'slidedown' 、'inline'.
+    tipShow: 'floatleft', 
+	
+	//Optional property, set the minmum value allowed to enter
+	min: 6,   
+
+	//optional property, set the maxnum value allowed to enter              
+    max: 12,                
+
+	//Optional property, set the minmum number of characters that allowed to enter
+    minLength: 3,           
+
+	//Optional property, set the maxmum number of characters that allowed to enter
+    maxlength: 8,           
 
     //Optional property, The default validation rules.
-    regulars: {
-            "email": [/^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))){2,6}$/, "Invalid email."],
-            "number": [/^-?([1-9]\d*\.\d*|0\.\d*[1-9]\d*|0?\.0+|0)$/, "Invalid number."],
-            "phone": [/^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$/, "Invalid phone number."],
-            "date": [/^(\d{4})\D?(0[1-9]|1[0-2])\D?([12]\d|0[1-9]|3[01])$/, "Should like(YYYY-MM-DD)."],
-            "password": [/^[a-z0-9_-]{6,18}$/, "Invalid password."],
-            "chinese": [/^[\u0391-\uFFE5]+$/, "Invalid chinese char."],
-            "english": [/^[A-Za-z]+$/, "Invalid english char."]
+     regulars: {
+            "urlstrict": /^(https?|s?ftp|git):\/\/(((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:)*@)?(((\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5]))|((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?)(:\d*)?)(\/((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)+(\/(([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)*)*)?)?(\?((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|[\uE000-\uF8FF]|\/|\?)*)?(#((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|\/|\?)*)?$/i,
+            "email": /^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))){2,6}$/,
+            "number": /^-?([1-9]\d*\.\d*|0\.\d*[1-9]\d*|0?\.0+|0)$/,
+            "phone": /^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$/,
+            "date": /^(\d{4})\D?(0[1-9]|1[0-2])\D?([12]\d|0[1-9]|3[01])$/,
+            "password": /^[a-z0-9_-]{6,18}$/,
+            "chinese": /^[\u0391-\uFFE5]+$/,
+            "english": /^[A-Za-z]+$/,
+            "digits": /^\d+$/,
+            "alphanum": /^\w+$/
+        },
+
+	//Optional property, The default message when focus.
+	focusMsg: {
+            english: "Only enter English characters as the user name",
+            chinese: "Only enter Chinese characters as the user name",
+            email: "Enter a useful email",
+            password: "Enter (1-9/A-z/_)",
+            eq: "The same password as above",
+            age: "1~100",
+            date: "Should like(YYYY-MM-DD)",
+            number: "All number",
+            min: "Greater than 6",
+            max: "Less than 12",
+            minlength: "The number of characters input should be more then 3",
+            maxlength: "The number of characters input should be smaller than 8",
+            notBlank: "You can enter any characters you like"
+       },
+	
+	////Optional property, The default error message.
+	errorMsg: {
+            english: "Invalid english character",
+            chinese: "Invalid chinese character",
+            email: "Invalid email, Please enter a right email",
+            password: "Invalid password",
+            eq: "Two password are deferent",
+            age: "Invalid age",
+            number: "Invalid number",
+            date: "Should like(YYYY-MM-DD)",
+            min: "too less",
+            max: "too greate",
+            minlength: "The number of characters are too little",
+            maxlength: "The number of characters are too many",
+            notBlank: "The input box cannot be empty",
+            phone: "Invalid teliphone number"
         },
 
     //Optional property, store the detail messages of inputs
@@ -122,6 +154,9 @@ $("#validate_form").validator({
 jquery popup has different methods , we can use it as below :
 ```javascript
 // to destroy
+$("#validate_form").validator("success");
+$("#validate_form").validator("error");
+$("#validate_form").validator("tipDispear");
 $("#validate_form").validator("destroy");
 
 ```
