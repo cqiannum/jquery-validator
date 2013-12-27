@@ -121,7 +121,8 @@ $("#validate_form").validator({inputs:inputs1});
             max: "Less than 12",
             minlength: "The number of characters input should be more then 3",
             maxlength: "The number of characters input should be smaller than 8",
-            notBlank: "You can enter any characters you like"
+            notBlank: "You can enter any characters you like",
+            phone: "Please enter your telephone number"
        },
 	
 	////Optional property, The default error message.

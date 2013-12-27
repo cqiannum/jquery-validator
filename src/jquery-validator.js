@@ -461,7 +461,8 @@
             max: "Less than 12",
             minlength: "The number of characters input should be more then 3",
             maxlength: "The number of characters input should be smaller than 8",
-            notBlank: "You can enter any characters you like"
+            notBlank: "You can enter any characters you like",
+            phone: "Please enter your telephone number"
         },
 
         //the default error message;
@@ -479,7 +480,7 @@
             minlength: "The number of characters are too little",
             maxlength: "The number of characters are too many",
             notBlank: "The input box cannot be empty",
-            phone: "Invalid teliphone number"
+            phone: "Invalid telephone number"
         },
 
         inputs: [],
