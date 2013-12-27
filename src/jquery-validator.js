@@ -63,7 +63,7 @@
                         whichType = item.type;
                        
                     if($(this).data("tip")) {
-                        /*self.tipStatus("focus", $(this), item.focusMsg);*/
+                       
                         self.tipFocus($(this), self.options.focusMsg[whichType]);
                     }
                 });
@@ -74,7 +74,7 @@
                     var item = $(this).data("item"),
                         whichType = item.type;
                     if($(this).data("tip")) {
-                        /*self.tipStatus("focus", $(this), item.focusMsg);*/
+                        
                         self.tipFocus($(this), self.options.focusMsg[whichType]);
                     }
                 });
