@@ -448,7 +448,7 @@
             english: "Only enter English characters as the user name",
             chinese: "Only enter Chinese characters as the user name",
             email: "Enter a useful email",
-            password: "Enter (1-9/A-z/_)",
+            password: "Enter more than 6 characters(1-9/A-z/_)",
             eq: "The same password as above",
             age: "1~100",
             date: "Should like(YYYY-MM-DD)",
