@@ -168,19 +168,23 @@
         //tip slidedown(the way of tip show)
         tipSlideDown: function(tip, input, message, type) {
 
-             tip.removeClass(this.classes.focusTip)
-                .removeClass(this.classes.rightTip)
-                .removeClass(this.classes.errorTip)
-                .removeClass(this.classes.ajaxTip)
-                .addClass(this.namespace + "_" + type + "_tip")
-                .html(message).css({
-                    "position": "absolute",
-                    "top": input.position().top,
-                    "left": input.position().left,
-                    "width": input.outerWidth(),
-                    "height": input.outerHeight() + 0,
-                    "textAlign": "center"
-             }).slideDown(300);
+            if(type === "focus") {
+                return;
+            } else {
+                tip.removeClass(this.classes.focusTip)
+                    .removeClass(this.classes.rightTip)
+                    .removeClass(this.classes.errorTip)
+                    .removeClass(this.classes.ajaxTip)
+                    .addClass(this.namespace + "_" + type + "_tip")
+                    .html(message).css({
+                        "position": "absolute",
+                        "top": input.position().top,
+                        "left": input.position().left,
+                        "width": input.outerWidth(),
+                        "height": input.outerHeight() + 0,
+                        "textAlign": "center"
+                }).slideDown(300);
+            }
         }, 
 
         //tip floatleft(the way of tip show)
