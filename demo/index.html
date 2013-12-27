@@ -151,8 +151,9 @@
 			<h3>Custom error messages</h3>
 			<pre class="has-example">
 				<code class="language-javascript">
-					var errorMsg1 = {"english": "只能输入英文字符", "age": "输入的年龄不在范围内", "email": "邮箱格式不对", "password": "密码格式不对", "eq": "两次输入的密码不一致"};
-					$("#custom_err_msg").validator({inputs: inputs1,errorMsg: errorMsg1});
+					var errorMsg1 = {"english": "只能输入英文字符", "age": "输入的年龄不在范围内", "email": "邮箱格式不对", "password": "密码格式不对", "eq": "两次输入的密码不一致"},
+		   	 	 	focusMsg1 = {"english": "请输入英文字符作为您的用户名", "age": "请输入您的年龄", "email": "请输入电子邮箱", "password": "请输入6个以上用英文字符、数字、下划线组成的密码", "eq": "确认密码"}
+					$("#custom_err_msg").validator({inputs: inputs1,errorMsg: errorMsg1,focusMsg: focusMsg1});
 				</code>
 			</pre>
 			<div class="example">
@@ -392,11 +393,13 @@
 
 
 		   	//========================
-		   	 var errorMsg1 = {"english": "只能输入英文字符", "age": "输入的年龄不在范围内", "email": "邮箱格式不对", "password": "密码格式不对", "eq": "两次输入的密码不一致"};
+		   	 var errorMsg1 = {"english": "只能输入英文字符", "age": "输入的年龄不在范围内", "email": "邮箱格式不对", "password": "密码格式不对", "eq": "两次输入的密码不一致"},
+		   	 	 focusMsg1 = {"english": "请输入英文字符作为您的用户名", "age": "请输入您的年龄", "email": "请输入电子邮箱", "password": "请输入6个以上用英文字符、数字、下划线组成的密码", "eq": "确认密码"}
 
 				$("#custom_err_msg").validator({
 					inputs: inputs1,
-					errorMsg: errorMsg1
+					errorMsg: errorMsg1,
+					focusMsg: focusMsg1
 				});
 
 			//=========================
