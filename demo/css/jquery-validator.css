@@ -1,0 +1,49 @@
+.validator_focus_input,.validator_success_input,.validator_error_input,.validator_ajax_checking_input {
+	background-image: url(../img/tip.png)!important;
+	background-repeat: no-repeat!important;
+}
+.validator_focus_input {
+	background-position: right 3px!important;
+}
+.validator_success_input {
+	background-position: right -341px!important;
+	background-color: #9bdf70!important;
+}
+.validator_error_input {
+	background-position: right -688px!important;
+	box-shadow: 1px 1px 15px rgba(255,167,155,0.8)!important;
+	border-color: rgba(255,167,155,0.8)!important;
+}
+.validator_ajax_checking_input {
+	background-position: right 6px!important;
+}
+
+/*提示的样式*/
+.validator_input_tip {
+	letter-spacing: 1px;
+	text-align: center;
+	padding: 2px 3px;
+	display: inline-block;
+	white-space: nowrap;
+	overflow: hidden;
+	border-radius: 2px;
+}
+.validator_focus_tip {
+	color: #ff6600;
+	background: #e6ffe6;
+}
+.validator_focus_inlinetip {
+	color: #009900;
+}
+.validator_error_tip {
+	color: #ff0000;
+	background: #fff2ef;
+	box-shadow: 1px 1px 15px rgba(255,167,155,0.8)!important;
+}
+.validator_error_inlinetip {
+	color: #ff0000;
+}
+.validator_ajax_checking_tip{
+	color: #009828;
+	background: #ff6600;
+}

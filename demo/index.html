@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>    <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]> <!-->   <html class="no-js"> <!--<![endif]>-->
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title>jquery-validator</title>
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width">
+
+		<link rel="stylesheet" href="css/bootstrap.css">
+		<link rel="stylesheet" href="css/prism.css">
+		<link rel="stylesheet" href="css/main.css">
+		<link rel="stylesheet" href="css/jquery-validator.css">
+
+		<script src="js/jquery-1.10.2.min.js"></script>
+		<script src="js/prism.js"></script>
+		<script src="js/bootstrap.js"></script>
+		<script src="js/jquery.toc.js"></script>
+		<script src="../src/jquery-validator.js"></script>
+
+		<style type="text/css">
+			.example {
+				background-color: #f8f8f8;
+			}
+			i {
+				font-style: normal;
+				padding: 0 5px;
+			}
+			form {
+				margin-top: 50px;
+			}
+			th {
+				text-align: right;
+				vertical-align: top;
+				padding-right: 5px;
+			}
+		</style>
+
+	</head>
+	<body>
+	<!--[if lt IE 7]>
+		<p class="chromeframe">
+			You are using an outdated browser.<a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">Install Google Chrome Frame</a> to better experience this site.
+		</p>
+	<![endif]-->	
+
+	<div id="toc"></div>
+	<div id="wrapper">
+		<h2>Demo</h2>
+		<section>
+			<h3>Match the entire form</h3>
+			<pre class="has-example">
+				<code class="language-javascript">
+					var inputs1 = [{name: "username", type: "english"}, { name: "email",type: "email"}, { name: "pwd", type: "password"}, { name: "chepwd", type: "eq", eqto: 'pwd'}, {name:"age", between:[18,78]}];
+					$("#validate_form").validator({ inputs:inputs1 });
+				</code>
+			</pre>
+			<div class="example">
+				<form action="" method="post" id="validate_form">
+					<table>
+						<thead></thead>
+						<tbody>
+							<tr>
+								<th>User:</th>
+								<td><input type="text" name="username" /></td>
+							</tr>
+							<tr>
+								<th>Age:</th>
+								<td><input type="text" name="age" /></td>
+							</tr>
+							<tr>
+								<th>Email:</th>
+								<td><input type="text" name="email" /></td>
+							</tr>
+							<tr>
+								<th>Password:</th>
+								<td><input type="password" name="pwd" /></td>
+							</tr>
+							<tr>
+								<th>CheckPass:</th>
+								<td><input type="password" name="chepwd" /></td>
+							</tr>
+							<tr>
+								<th>&nbsp;&nbsp;&nbsp;&nbsp;</th>
+								<td><input type="submit" name="submit" value="submit" /></td>
+							</tr>
+						</tbody>
+					</table>
+				</form>
+			</div>
+		</section>
+		<section>
+			<h3>Match a input</h3>
+			<pre class="has-example">
+				<code class="language-javascript">
+					var inputs2 = [{name: "email", type: "email"}, {name: "date", type: "date"}, {name: "number", type: "number"}, {name: "notBlank", type: "notBlank"}, {name: "min", type: "min"}, {name: "max", type: "max"}, {name: "minlength", type: "minlength"}, {name: "maxlength", type: "maxlength"}];
+		   			$("#email").validator({inputs: inputs2});
+		            $("#date").validator({inputs: inputs2});
+				   	$("#num").validator({inputs: inputs2});
+				   	$("#notBlank").validator({inputs: inputs2});
+				   	$("#min").validator({inputs: inputs2});
+				   	$("#max").validator({inputs: inputs2});
+				   	$("#minlength").validator({inputs: inputs2});
+				   	$("#maxlength").validator({inputs: inputs2});
+				</code>
+			</pre>
+			<div class="example">
+				<table>
+					<thead></thead>
+					<tbody>
+						<tr>
+							<th>Email:</th>
+							<td><input type="text" id="email" name="email" /></td>
+						</tr>
+						<tr>
+							<th>Date:</th>
+							<td><input type="text" id="date" name="date" /></td>
+						</tr>
+						<tr>
+							<th>Number:</th>
+							<td><input type="text" value="" id="num" name="number" /></td>
+						</tr>
+						<tr>
+							<th>notBlank:</th>
+							<td><input type="text" value="" id="notBlank" name="notBlank" /></td>
+						</tr>
+						<tr>
+							<th>Min(6):</th>
+							<td><input type="text" value="" id="min" name="min" /></td>
+						</tr>
+						<tr>
+							<th>Max(12):</th>
+							<td><input type="text" value="" id="max" name="max" /></td>
+						</tr>
+						<tr>
+							<th>MinLength(3):</th>
+							<td><input type="text" id="minlength" name="minlength" /></td>
+						</tr>
+						<tr>
+							<th>MaxLength(8):</th>
+							<td><input type="text" id="maxlength" name="maxlength" /></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</section>
+		<section>
+			<h3>Custom error messages</h3>
+			<pre class="has-example">
+				<code class="language-javascript">
+					var errorMsg1 = {"english": "只能输入英文字符", "age": "输入的年龄不在范围内", "email": "邮箱格式不对", "password": "密码格式不对", "eq": "两次输入的密码不一致"};
+					$("#custom_err_msg").validator({inputs: inputs1,errorMsg: errorMsg1});
+				</code>
+			</pre>
+			<div class="example">
+				<form action="" method="post" id="custom_err_msg">
+					<table>
+						<thead></thead>
+						<tbody>
+							<tr>
+								<th>User:</th>
+								<td><input type="text" name="username" /></td>
+							</tr>
+							<tr>
+								<th>Age:</th>
+								<td><input type="text" name="age" /></td>
+							</tr>
+							<tr>
+								<th>Email:</th>
+								<td><input type="text" name="email" /></td>
+							</tr>
+							<tr>
+								<th>Password:</th>
+								<td><input type="password" name="pwd" /></td>
+							</tr>
+							<tr>
+								<th>CheckPass:</th>
+								<td><input type="password" name="chepwd" /></td>
+							</tr>
+							<tr>
+								<th>&nbsp;&nbsp;&nbsp;&nbsp;</th>
+								<td><input type="submit" name="submit" value="submit" /></td>
+							</tr>
+						</tbody>
+					</table>
+				</form>
+			</div>
+		</section>
+		<section>
+			<h3>Custom validate rules</h3>
+			<pre class="has-example">
+				<code class="language-javascript">
+					var regular1 = {"english": /^[A-Za-z]+$/, "email": /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/, "password": /^[a-z0-9]{6,18}$/}
+				 	$("#custom_rul").validator({inputs: inputs1,regulars: regular1});
+				</code>
+			</pre>
+			<div class="example">
+				<form action="" method="post" id="custom_rul">
+					<table>
+						<thead></thead>
+						<tbody>
+							<tr>
+								<th>User:</th>
+								<td><input type="text" name="username" /></td>
+							</tr>
+							<tr>
+								<th>Age:</th>
+								<td><input type="text" name="age" /></td>
+							</tr>
+							<tr>
+								<th>Email:</th>
+								<td><input type="text" name="email" /></td>
+							</tr>
+							<tr>
+								<th>Password:</th>
+								<td><input type="password" name="pwd" /></td>
+							</tr>
+							<tr>
+								<th>CheckPass:</th>
+								<td><input type="password" name="chepwd" /></td>
+							</tr>
+							<tr>
+								<th>&nbsp;&nbsp;&nbsp;&nbsp;</th>
+								<td><input type="submit" name="submit" value="submit" /></td>
+							</tr>
+						</tbody>
+					</table>
+				</form>
+			</div>
+		</section>
+		<section>
+			<h3>Anther error message displayed</h3>
+			<pre class="has-example">
+				<code class="language-javascript">
+					$("#style_dis").validator({inputs: inputs1,tipShow: "inline"});
+				</code>
+			</pre>
+			<div class="example">
+				<form action="" method="post" id="style_dis">
+					<table>
+						<thead></thead>
+						<tbody>
+							<tr>
+								<th>User:</th>
+								<td><input type="text" name="username" /></td>
+							</tr>
+							<tr>
+								<th>Age:</th>
+								<td><input type="text" name="age" /></td>
+							</tr>
+							<tr>
+								<th>Email:</th>
+								<td><input type="text" name="email" /></td>
+							</tr>
+							<tr>
+								<th>Password:</th>
+								<td><input type="password" name="pwd" /></td>
+							</tr>
+							<tr>
+								<th>CheckPass:</th>
+								<td><input type="password" name="chepwd" /></td>
+							</tr>
+							<tr>
+								<th>&nbsp;&nbsp;&nbsp;&nbsp;</th>
+								<td><input type="submit" name="submit" value="submit" /></td>
+							</tr>
+						</tbody>
+					</table>
+				</form>
+			</div>
+			<pre class="has-example">
+				<code class="language-javascript">
+					$("#style_dis2").validator({inputs: inputs1,tipShow: "slidedown"});
+				</code>
+			</pre>
+			<div class="example">
+				<form action="" method="post" id="style_dis2">
+					<table>
+						<thead></thead>
+						<tbody>
+							<tr>
+								<th>User:</th>
+								<td><input type="text" name="username" /></td>
+							</tr>
+							<tr>
+								<th>Age:</th>
+								<td><input type="text" name="age" /></td>
+							</tr>
+							<tr>
+								<th>Email:</th>
+								<td><input type="text" name="email" /></td>
+							</tr>
+							<tr>
+								<th>Password:</th>
+								<td><input type="password" name="pwd" /></td>
+							</tr>
+							<tr>
+								<th>CheckPass:</th>
+								<td><input type="password" name="chepwd" /></td>
+							</tr>
+							<tr>
+								<th>&nbsp;&nbsp;&nbsp;&nbsp;</th>
+								<td><input type="submit" name="submit" value="submit" /></td>
+							</tr>
+						</tbody>
+					</table>
+				</form>
+			</div>
+		</section>
+		<section>
+			<h3>Ajax support</h3>
+			<pre class="has-example">
+				<code class="language-javascript">
+					var inputs3 = [{name:"name", type:"chinese", errorMsg:"请输入中文昵称", ajax:{url:"http://xxxx", errorMsg:"用户已存在", successMsg:"用户名可以注册！"}},{name:"pwd", type:'password',errorMsg:"输入英文"	}];
+					$("#ajax_sup").validator({ inputs: inputs3 });	    	
+				</code>
+			</pre>
+			<div class="example">
+				<form action="" method="post" id="ajax_sup">
+					<table>
+						<thead></thead>
+						<tbody>
+							<tr>
+								<th>User:</th>
+								<td><input type="text" name="username" /></td>
+							</tr>
+							<!-- <tr>
+								<th>Age:</th>
+								<td><input type="text" name="age" /></td>
+							</tr>
+							<tr>
+								<th>Email:</th>
+								<td><input type="text" name="email" /></td>
+							</tr> -->
+							<tr>
+								<th>Password:</th>
+								<td><input type="password" name="pwd" /></td>
+							</tr>
+							<tr>
+								<th>CheckPass:</th>
+								<td><input type="password" name="chepwd" /></td>
+							</tr>
+							<tr>
+								<th>&nbsp;&nbsp;&nbsp;&nbsp;</th>
+								<td><input type="submit" name="submit" value="submit" /></td>
+							</tr>
+						</tbody>
+					</table>
+				</form>
+			</div>
+		</section>
+	</div>
+	<script>
+		$(function() {
+
+			var inputs1 = [{name: "username", type: "english"}, { name: "email",	type: "email"}, { name: "pwd", type: "password"}, { name: "chepwd", type: "eq", eqto: 'pwd'}, {name:"age",type:"age", between:[18,78]}];
+
+			$("#validate_form").validator({
+		        inputs:inputs1
+		   	});
+
+			//======================== 
+		   	var inputs2 = [{name: "email", type: "email"}, {name: "date", type: "date"}, {name: "number", type: "number"}, {name: "notBlank", type: "notBlank"}, {name: "min", type: "min"}, {name: "max", type: "max"}, {name: "minlength", type: "minlength"}, {name: "maxlength", type: "maxlength"}];
+
+		   	$("#email").validator({
+		   		inputs: inputs2
+		   	});
+		   	$("#date").validator({
+		   		inputs: inputs2
+		   	});
+		   	$("#num").validator({
+		   		inputs: inputs2
+		   	});
+		   	$("#notBlank").validator({
+		   		inputs: inputs2
+		   	});
+		   	$("#min").validator({
+		   		inputs: inputs2
+		   	});
+		   	$("#max").validator({
+		   		inputs: inputs2
+		   	});
+		   	$("#minlength").validator({
+		   		inputs: inputs2
+		   	});
+		   	$("#maxlength").validator({
+		   		inputs: inputs2
+		   	});
+
+
+		   	//========================
+		   	 var errorMsg1 = {"english": "只能输入英文字符", "age": "输入的年龄不在范围内", "email": "邮箱格式不对", "password": "密码格式不对", "eq": "两次输入的密码不一致"};
+
+				$("#custom_err_msg").validator({
+					inputs: inputs1,
+					errorMsg: errorMsg1
+				});
+
+			//=========================
+			 var regular1 = {"english": /^[A-Za-z]+$/, "email": /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/, "password": /^[a-z0-9]{6,18}$/};
+
+			 	$("#custom_rul").validator({
+			 		inputs: inputs1,
+			 		regulars: regular1
+			 	});
+			//=========================
+			$("#style_dis").validator({
+				inputs: inputs1,
+				tipShow: "inline"
+			});
+
+			$("#style_dis2").validator({
+				inputs: inputs1,
+				tipShow: "slidedown"
+			});
+
+			//=========================
+			var inputs3 = [{name:"name", type:"chinese", errorMsg:"请输入中文昵称", ajax:{url:"http://xxxx", errorMsg:"用户已存在", successMsg:"用户名可以注册！"} }, {name:"pwd", type:"password",errorMsg:"输入英文"	}];
+
+				$("#ajax_sup").validator({
+					inputs: inputs3
+				});
+				
+		});
+
+	</script>
+	<script>
+		(function(){
+    		$('#toc').toc();
+    	})();
+	</script>
+	</body>
+</html>

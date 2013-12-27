@@ -1,0 +1,26 @@
+{
+  "name": "jquery-validator",
+  "title": "jQuery Validator",
+  "description": "The best jQuery plugin ever.",
+  "version": "0.1.0",
+  "homepage": "https://github.com/void/jquery-validator",
+  "author": {
+    "name": "cqiannum",
+    "email": "1589856452@qq.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/void/jquery-validator.git"
+  },
+  "bugs": "https://github.com/void/jquery-validator/issues",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/void/jquery-validator/blob/master/LICENSE-MIT"
+    }
+  ],
+  "dependencies": {
+    "jquery": "*"
+  },
+  "keywords": []
+}
