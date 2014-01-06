@@ -329,7 +329,7 @@
         checkMinLength: function(input) {
             var length = input.val().length;
 
-            if(length < this.minLength || length == 0) {
+            if(length < this.minLength || length === 0) {
                 return false;
             } else {
                 return true;
@@ -340,7 +340,7 @@
         checkMaxLength: function(input) {
             var length = input.val().length;
 
-            if(length > this.maxlength || length == 0) {
+            if(length > this.maxlength || length === 0) {
                 return false;
             } else {
                 return true;
@@ -351,7 +351,7 @@
         checkNotBlank: function(input) {
             var value = input.val();
 
-            if(value == "") {
+            if(value === "") {
                 return false;
             } else {
                 return true;
@@ -384,8 +384,7 @@
         //ajax chedked
         checkAjax: function(item, input) {
       
-            var ajaxUrl = item.ajaxUrl,
-                self = this;
+            var ajaxUrl = item.ajaxUrl;
             
             $.ajax({
                 url: ajaxUrl,
@@ -394,7 +393,7 @@
                 dataType: "text",
                 timeout: 5000,
                 async: false,
-                success: function(data) { 
+                success: function() { 
                     return true;
                 },
             
