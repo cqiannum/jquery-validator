@@ -51,6 +51,7 @@
     Validator.prototype = {
         constructor: Validator,
 
+        //initial
         init: function() {
             var self = this;
 
@@ -157,14 +158,17 @@
                .addClass(this.namespace + "_" + type + "_input");
         },
 
+        //show the focus message and style
         tipFocus: function(input, message) {
             this.howToShow(input, message, "focus");
         },
 
+        //show the success style
         tipSuccess: function(input, message) {
             this.howToShow(input, message, "success");
         },
 
+        //show the error message and style
         tipError: function(input, message) {
             this.howToShow(input, message, "error");
         },
@@ -377,7 +381,7 @@
             }
         },
 
-        //ajax
+        //ajax chedked
         checkAjax: function(item, input) {
       
             var ajaxUrl = item.ajaxUrl,

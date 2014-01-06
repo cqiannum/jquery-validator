@@ -49,11 +49,11 @@ Create base html element:
 			</tr>
 			<tr>
 				<th>Password:</th>
-				<td><input type="password" name="pwd" /></td>
+				<td><input type="password" name="password" /></td>
 			</tr>
 			<tr>
 				<th>CheckPass:</th>
-				<td><input type="password" name="chepwd" /></td>
+				<td><input type="password" name="checkpassword" /></td>
 			</tr>
 			<tr>
 				<th>&nbsp;&nbsp;&nbsp;&nbsp;</th>
@@ -66,7 +66,7 @@ Create base html element:
 
 Initialize validator:
 ```javascript
-var inputs1 = [{name: "username", type: "english"}, { name: "email",	type: "email"}, { name: "pwd", type: "password"}, { name: "chepwd", type: "eq", eqto: 'pwd'}, {name:"age",type:"age", between:[18,78]}];
+var inputs1 = [{name: "username", type: "english"}, { name: "email",	type: "email"}, { name: "password", type: "password"}, { name: "checkpassword", type: "equal", equalTo: 'password'}, {name:"age",type:"age", between:[18,78]}];
 $("#validate_form").validator({inputs:inputs1});
 ```
 
@@ -140,7 +140,8 @@ $("#validate_form").validator({inputs:inputs1});
             minlength: "The number of characters are too little",
             maxlength: "The number of characters are too many",
             notBlank: "The input box cannot be empty",
-            phone: "Invalid teliphone number"
+            phone: "Invalid teliphone number",
+            ajax: "The username is exists"
         },
 
     //Optional property, store the detail messages of inputs
