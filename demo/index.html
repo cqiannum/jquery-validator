@@ -54,7 +54,7 @@
 			<h3>Match the entire form</h3>
 			<pre class="has-example">
 				<code class="language-javascript">
-					var inputs1 = [{name: "username", type: "english"}, { name: "email",type: "email"}, { name: "pwd", type: "password"}, { name: "chepwd", type: "eq", eqto: 'pwd'}, {name:"age", between:[18,78]}];
+					var inputs1 = [{name: "username", type: "english"}, {name:"age",type:"age", between:[1,100]}, { name: "email",	type: "email"}, { name: "password", type: "password"}, { name: "checkpassword", type: "equal", equalTo: 'password'}];
 					$("#validate_form").validator({ inputs:inputs1 });
 				</code>
 			</pre>
@@ -77,11 +77,11 @@
 							</tr>
 							<tr>
 								<th>Password:</th>
-								<td><input type="password" name="pwd" /></td>
+								<td><input type="password" name="password" /></td>
 							</tr>
 							<tr>
-								<th>CheckPass:</th>
-								<td><input type="password" name="chepwd" /></td>
+								<th>CheckPassword:</th>
+								<td><input type="password" name="checkpassword" /></td>
 							</tr>
 							<tr>
 								<th>&nbsp;&nbsp;&nbsp;&nbsp;</th>
@@ -151,8 +151,8 @@
 			<h3>Custom error messages</h3>
 			<pre class="has-example">
 				<code class="language-javascript">
-					var errorMsg1 = {"english": "只能输入英文字符", "age": "输入的年龄不在范围内", "email": "邮箱格式不对", "password": "密码格式不对", "eq": "两次输入的密码不一致"},
-		   	 	 	focusMsg1 = {"english": "请输入英文字符作为您的用户名", "age": "请输入您的年龄", "email": "请输入电子邮箱", "password": "请输入6个以上用英文字符、数字、下划线组成的密码", "eq": "确认密码"}
+					var errorMsg1 = {"english": "只能输入英文字符", "age": "输入的年龄不在范围内", "email": "邮箱格式不对", "password": "密码格式不对", "equal": "两次输入的密码不一致"},
+		   	 	 	focusMsg1 = {"english": "请输入英文字符作为您的用户名", "age": "请输入您的年龄", "email": "请输入电子邮箱", "password": "请输入6个以上用英文字符、数字、下划线组成的密码", "equal": "确认密码"}
 					$("#custom_err_msg").validator({inputs: inputs1,errorMsg: errorMsg1,focusMsg: focusMsg1});
 				</code>
 			</pre>
@@ -175,11 +175,11 @@
 							</tr>
 							<tr>
 								<th>Password:</th>
-								<td><input type="password" name="pwd" /></td>
+								<td><input type="password" name="password" /></td>
 							</tr>
 							<tr>
 								<th>CheckPass:</th>
-								<td><input type="password" name="chepwd" /></td>
+								<td><input type="password" name="checkpassword" /></td>
 							</tr>
 							<tr>
 								<th>&nbsp;&nbsp;&nbsp;&nbsp;</th>
@@ -194,7 +194,7 @@
 			<h3>Custom validate rules</h3>
 			<pre class="has-example">
 				<code class="language-javascript">
-					var regular1 = {"english": /^[A-Za-z]+$/, "email": /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/, "password": /^[a-z0-9]{6,18}$/}
+					var regular1 = {"english": /^[A-Za-z]+$/, "email": /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/, "password": /^[a-z0-9]{6,18}$/};
 				 	$("#custom_rul").validator({inputs: inputs1,regulars: regular1});
 				</code>
 			</pre>
@@ -217,11 +217,11 @@
 							</tr>
 							<tr>
 								<th>Password:</th>
-								<td><input type="password" name="pwd" /></td>
+								<td><input type="password" name="password" /></td>
 							</tr>
 							<tr>
 								<th>CheckPass:</th>
-								<td><input type="password" name="chepwd" /></td>
+								<td><input type="password" name="checkpassword" /></td>
 							</tr>
 							<tr>
 								<th>&nbsp;&nbsp;&nbsp;&nbsp;</th>
@@ -258,11 +258,11 @@
 							</tr>
 							<tr>
 								<th>Password:</th>
-								<td><input type="password" name="pwd" /></td>
+								<td><input type="password" name="password" /></td>
 							</tr>
 							<tr>
 								<th>CheckPass:</th>
-								<td><input type="password" name="chepwd" /></td>
+								<td><input type="password" name="checkpassword" /></td>
 							</tr>
 							<tr>
 								<th>&nbsp;&nbsp;&nbsp;&nbsp;</th>
@@ -296,11 +296,11 @@
 							</tr>
 							<tr>
 								<th>Password:</th>
-								<td><input type="password" name="pwd" /></td>
+								<td><input type="password" name="password" /></td>
 							</tr>
 							<tr>
 								<th>CheckPass:</th>
-								<td><input type="password" name="chepwd" /></td>
+								<td><input type="password" name="checkpassword" /></td>
 							</tr>
 							<tr>
 								<th>&nbsp;&nbsp;&nbsp;&nbsp;</th>
@@ -315,7 +315,7 @@
 			<h3>Ajax support</h3>
 			<pre class="has-example">
 				<code class="language-javascript">
-					var inputs3 = [{name:"name", type:"chinese", errorMsg:"请输入中文昵称", ajax:{url:"http://xxxx", errorMsg:"用户已存在", successMsg:"用户名可以注册！"}},{name:"pwd", type:'password',errorMsg:"输入英文"	}];
+					var inputs3 = [{name:"username", type:"english", ajaxUrl:"http://xxxx"}, {name:"password", type:"password"},{ name: "checkpassword", type: "equal", equalTo: "password"}];
 					$("#ajax_sup").validator({ inputs: inputs3 });	    	
 				</code>
 			</pre>
@@ -328,21 +328,13 @@
 								<th>User:</th>
 								<td><input type="text" name="username" /></td>
 							</tr>
-							<!-- <tr>
-								<th>Age:</th>
-								<td><input type="text" name="age" /></td>
-							</tr>
-							<tr>
-								<th>Email:</th>
-								<td><input type="text" name="email" /></td>
-							</tr> -->
 							<tr>
 								<th>Password:</th>
-								<td><input type="password" name="pwd" /></td>
+								<td><input type="password" name="password" /></td>
 							</tr>
 							<tr>
 								<th>CheckPass:</th>
-								<td><input type="password" name="chepwd" /></td>
+								<td><input type="password" name="checkpassword" /></td>
 							</tr>
 							<tr>
 								<th>&nbsp;&nbsp;&nbsp;&nbsp;</th>
@@ -357,7 +349,7 @@
 	<script>
 		$(function() {
 
-			var inputs1 = [{name: "username", type: "english"}, { name: "email",	type: "email"}, { name: "pwd", type: "password"}, { name: "chepwd", type: "eq", eqto: 'pwd'}, {name:"age",type:"age", between:[1,100]}];
+			var inputs1 = [{name: "username", type: "english"}, {name:"age",type:"age", between:[1,100]}, { name: "email", type: "email"}, { name: "password", type: "password"}, { name: "checkpassword", type: "equal", equalTo: 'password'}];
 
 			$("#validate_form").validator({
 		        inputs:inputs1
@@ -393,8 +385,8 @@
 
 
 		   	//========================
-		   	 var errorMsg1 = {"english": "只能输入英文字符", "age": "输入的年龄不在范围内", "email": "邮箱格式不对", "password": "密码格式不对", "eq": "两次输入的密码不一致"},
-		   	 	 focusMsg1 = {"english": "请输入英文字符作为您的用户名", "age": "请输入您的年龄", "email": "请输入电子邮箱", "password": "请输入6个以上用英文字符、数字、下划线组成的密码", "eq": "确认密码"}
+		   	 var errorMsg1 = {"english": "只能输入英文字符", "age": "输入的年龄不在范围内", "email": "邮箱格式不对", "password": "密码格式不对", "equal": "两次输入的密码不一致"},
+		   	 	 focusMsg1 = {"english": "请输入英文字符作为您的用户名", "age": "请输入您的年龄", "email": "请输入电子邮箱", "password": "请输入6个以上用英文字符、数字、下划线组成的密码", "equal": "确认密码"}
 
 				$("#custom_err_msg").validator({
 					inputs: inputs1,
@@ -421,7 +413,7 @@
 			});
 
 			//=========================
-			var inputs3 = [{name:"name", type:"chinese", errorMsg:"请输入中文昵称", ajax:{url:"http://xxxx", errorMsg:"用户已存在", successMsg:"用户名可以注册！"} }, {name:"pwd", type:"password",errorMsg:"输入英文"	}];
+			var inputs3 = [{name:"username", type:"english", ajaxUrl:"http://xxxx"}, {name:"password", type:"password"},{ name: "checkpassword", type: "equal", equalTo: "password"}];
 
 				$("#ajax_sup").validator({
 					inputs: inputs3
