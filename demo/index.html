@@ -395,7 +395,7 @@
 				});
 
 			//=========================
-			 var regular1 = {"english": /^[A-Za-z]+$/, "email": /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/, "password": /^[a-z0-9]{6,18}$/};
+			 var regular1 = {"english": /^[A-Za-z]+$/, "email": /^(?:[a-zA-Z\d]+[_\-\+\.]*){4,16}@(?:([a-zA-Z\d]+\-?)*[a-zA-Z\d]+\.)+([a-zA-Z]{2,})+$/i, "password": /^\w{6,18}$/};
 
 			 	$("#custom_rul").validator({
 			 		inputs: inputs1,
